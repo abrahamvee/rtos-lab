@@ -1,0 +1,9 @@
+user&password: userir
+to launch: python3 FanSimulator.py -mX (where X is the level (1,6))
+
+to connect the board: 
+    WHITE: PA15
+    GREEN: PB7
+    
+LEVEL 1:
+	C
