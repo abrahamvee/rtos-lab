@@ -1,3 +1,4 @@
+
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -62,7 +63,7 @@ void BackgroundWork(void *argument);
 osThreadId_t backgroundWorkTaskHandle;
 
 SemaphoreHandle_t semTimer;
-SemaphoreHandle_t semBalloon;
+SemaphoreHandle_t semBalloon; 
 
 int CheckTimerAction=0 ;
 
@@ -147,7 +148,9 @@ int main(void)
   /* USER CODE END 2 */
 
   osKernelInitialize();
-
+	
+  semBalloon = xSemaphoreCreateMutex();
+	
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
