@@ -63,7 +63,7 @@ void BackgroundWork(void *argument);
 osThreadId_t backgroundWorkTaskHandle;
 
 SemaphoreHandle_t semTimer;
-SemaphoreHandle_t semBalloon; 
+SemaphoreHandle_t semBalloon;
 
 int CheckTimerAction=0 ;
 
@@ -116,7 +116,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
- 
+
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -148,9 +148,10 @@ int main(void)
   /* USER CODE END 2 */
 
   osKernelInitialize();
-	
+
   semBalloon = xSemaphoreCreateMutex();
-	
+  semTimer=xSemaphoreCreateBinary();
+
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
@@ -207,7 +208,7 @@ int main(void)
   };
   backgroundWorkTaskHandle = osThreadNew(BackgroundWork, NULL, &backgroundWorkTask_attributes);
 
-  semTimer=xSemaphoreCreateBinary();
+ //  semTimer=xSemaphoreCreateBinary();
 
   finalizeHardwareInit();
 
@@ -215,7 +216,7 @@ int main(void)
 
   /* Start scheduler */
   osKernelStart();
- 
+
   /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
