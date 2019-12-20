@@ -8,3 +8,5 @@ to connect the board:
 LEVEL 1:
 	The function was not initialized, there was a declaration for a function to send, but the function was not declared as a thread.
 	So we did, it and then it worked. 
+
+int_mgr that needs to work on for lab3
