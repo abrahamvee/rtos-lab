@@ -12,9 +12,9 @@ static unsigned int BalloonNeeded=0 ;
 static bool finished_updating = false;
 
 void UpdateBalloonNeeded(uint8_t const _BalloonNeeded)
-{  
-       xSemaphoreTake(semBaloon,portMAX_DELAY);
-   	 BalloonNeeded =_BalloonNeeded ;
+{
+       xSemaphoreTake(semBalloon,portMAX_DELAY);
+   	 BalloonNeeded +=_BalloonNeeded ;
        xSemaphoreGive(semBalloon);
 }
 
@@ -27,8 +27,8 @@ void SendBalloon(void *argument)
 {
     while(1)
     {
-       xSemaphoreTake(semBaloon,portMAX_DELAY);
-       
+       xSemaphoreTake(semBalloon,portMAX_DELAY);
+
    	 if (BalloonNeeded>0)
    	 {
    		 DoSendBalloon();
@@ -36,7 +36,7 @@ void SendBalloon(void *argument)
    	 }
         xSemaphoreGive(semBalloon);
    	 osDelay(10);
-   
+
     }
 }
 
